@@ -1,26 +1,18 @@
-trigger:
-- main
-
-resources:
-- repo: self
-
-variables:
-  tag: '$(Build.BuildId)'
-
-stages:
-- stage: Build
-  displayName: Build image
-  jobs:
-  - job: Build
-    displayName: Build
+- stage: 'Build'
+  displayName: 'Build and push'
+  jobs:  
+  - job: 'Build'
+    displayName: 'Build job'
     pool:
-      vmImage: 'mcr.microsoft.com/dotnet'
+      vmImage: 'ubuntu-20.04'
     steps:
-    - bash: docker build --target build -t hlbuildimage -f .devcontainer/Dockerfile . &&  docker run --name hlbuildcontainer hlbuildimage && docker cp hlbuildcontainer:/out $(Build.ArtifactStagingDirectory)/HLOutput
-      displayName: Build high-level Azure Sphere application in a container and copy the output
-    - task: PublishBuildArtifacts@1
-      displayName: Publish build artifacts
+    - task: Docker@2
+      displayName: 'Build and push the image to container registry'
       inputs:
-        PathtoPublish: '$(Build.ArtifactStagingDirectory)/HLOutput/Blink.imagepackage'
-        ArtifactName: 'BlinkSample.imagepackage'
-        publishLocation: 'Container'
+        command: buildAndPush
+        buildContext: $(Build.Repository.LocalPath)
+        repository: $(webRepository)
+        dockerfile: '$(Build.SourcesDirectory)/Tailspin.SpaceGame.Web/Dockerfile'
+        containerRegistry: 'Container Registry Connection'
+        tags: |
+          $(tag)
