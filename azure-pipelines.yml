@@ -14,7 +14,7 @@ stages:
   - job: Build
     displayName: Build
     pool:
-      vmImage: 'ubuntu-latest'
+      vmImage: 'mcr.microsoft.com/dotnet'
     steps:
     - bash: docker build --target build -t hlbuildimage -f .devcontainer/Dockerfile . &&  docker run --name hlbuildcontainer hlbuildimage && docker cp hlbuildcontainer:/out $(Build.ArtifactStagingDirectory)/HLOutput
       displayName: Build high-level Azure Sphere application in a container and copy the output
