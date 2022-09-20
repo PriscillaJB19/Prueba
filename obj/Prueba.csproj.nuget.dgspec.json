@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ana.jimenez\\Desktop\\Prueba\\Prueba.csproj": {}
+    "c:\\Users\\ana.jimenez\\Desktop\\Prueba\\Prueba.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ana.jimenez\\Desktop\\Prueba\\Prueba.csproj": {
+    "c:\\Users\\ana.jimenez\\Desktop\\Prueba\\Prueba.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ana.jimenez\\Desktop\\Prueba\\Prueba.csproj",
+        "projectUniqueName": "c:\\Users\\ana.jimenez\\Desktop\\Prueba\\Prueba.csproj",
         "projectName": "Prueba",
-        "projectPath": "C:\\Users\\ana.jimenez\\Desktop\\Prueba\\Prueba.csproj",
+        "projectPath": "c:\\Users\\ana.jimenez\\Desktop\\Prueba\\Prueba.csproj",
         "packagesPath": "C:\\Users\\ana.jimenez\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ana.jimenez\\Desktop\\Prueba\\obj\\",
+        "outputPath": "c:\\Users\\ana.jimenez\\Desktop\\Prueba\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ana.jimenez\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -13,12 +13,4 @@ pipeline{
             }
         }
     }
-
-    stage('docker push'){
-        steps{
-            script{
-                dockerLib.push(DockerImage:"priscillajb/prueba:1.0-${BUILD_ID}")
-            }
-        }
-    }
 }
