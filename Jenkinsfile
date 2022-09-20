@@ -6,7 +6,7 @@ pipeline{
         stage('docker build'){
             steps{
                 script{
-                    dockerLib.build(DockerfilePath:"prueba/Dockerfile",
+                    dockerLib.build(DockerfilePath:"Dockerfile",
                     DockerImage:"priscillajb/prueba:1.0-${BUILD_ID}",
                     DockerContext:"prueba")
                 }
