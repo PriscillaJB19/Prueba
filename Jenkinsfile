@@ -6,13 +6,9 @@ pipeline{
         stage('docker build'){
             steps{
                 script{
-
-                     def dockerLib.build = dockerTool'docker';  
-        			   withDockerEnv("docker") {
-        			   sh "${dockerTool("docker")}/bin/docker \
-        							-DockerfilePath=Dockerfile \
-                                    -DockerImage=priscillajb/prueba-${BUILD_ID} \
-                                    -DockerContext=Prueba"
+                    dockerLib.build(DockerfilePath:"Dockerfile",
+                    DockerImage:"priscillajb/prueba-${BUILD_ID}",
+                    DockerContext:"Prueba")
                 }
             }
         }
@@ -20,11 +16,7 @@ pipeline{
     stage('docker push'){
         steps{
             script{
-
-                 def dockerLib.push =  dockerTool'docker';  
-        			   withDockerEnv("docker") {
-        			   sh "${dockerTool("docker")}/bin/docker \
-                                    -DockerImage=priscillajb/prueba-${BUILD_ID}"
+                dockerLib.push(DockerImage:"priscillajb/prueba-${BUILD_ID}")
             }
             }
         }
