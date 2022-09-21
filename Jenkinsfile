@@ -7,9 +7,9 @@ pipeline{
             steps{
                 script{
 
-                     def dockerLib.build = tool 'docker';  
+                     def dockerLib.build = dockerTool'docker';  
         			   withDockerEnv("docker") {
-        			   sh "${tool("docker")}/bin/docker \
+        			   sh "${dockerTool("docker")}/bin/docker \
         							-DockerfilePath=Dockerfile \
                                     -DockerImage=priscillajb/prueba-${BUILD_ID} \
                                     -DockerContext=Prueba"
@@ -21,9 +21,9 @@ pipeline{
         steps{
             script{
 
-                 def dockerLib.push = tool 'docker';  
+                 def dockerLib.push =  dockerTool'docker';  
         			   withDockerEnv("docker") {
-        			   sh "${tool("docker")}/bin/docker \
+        			   sh "${dockerTool("docker")}/bin/docker \
                                     -DockerImage=priscillajb/prueba-${BUILD_ID}"
             }
             }
