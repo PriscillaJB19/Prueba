@@ -6,9 +6,26 @@ pipeline{
         stage('docker build'){
             steps{
                 script{
-                    dockerLib.build(DockerfilePath:"Dockerfile",
-                    DockerContext:"Prueba")
+
+                     def dockerLib.build = tool 'docker';  
+        			   withDockerEnv("docker") {
+        			   sh "${tool("docker")}/bin/docker \
+        							-DockerfilePath=Dockerfile \
+                                    -DockerImage=priscillajb/prueba-${BUILD_ID} \
+                                    -DockerContext=Prueba"
                 }
+            }
+        }
+
+    stage('docker push'){
+        steps{
+            script{
+
+                 def dockerLib.push = tool 'docker';  
+        			   withDockerEnv("docker") {
+        			   sh "${tool("docker")}/bin/docker \
+                                    -DockerImage=priscillajb/prueba-${BUILD_ID}"
+            }
             }
         }
     }
