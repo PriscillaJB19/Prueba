@@ -7,17 +7,8 @@ pipeline{
             steps{
                 script{
                     dockerLib.build(DockerfilePath:"Dockerfile",
-                    DockerImage:"priscillajb/prueba-${BUILD_ID}",
                     DockerContext:"Prueba")
                 }
-            }
-        }
-
-    stage('docker push'){
-        steps{
-            script{
-                dockerLib.push(DockerImage:"priscillajb/prueba-${BUILD_ID}")
-            }
             }
         }
     }
