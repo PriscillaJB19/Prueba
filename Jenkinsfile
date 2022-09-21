@@ -6,18 +6,18 @@ pipeline{
         stage('docker build'){
             steps{
                 script{
-                    dockerLib.build(DockerfilePath:"Prueba/NetCore/Dockerfile",
+                    dockerLib.build(DockerfilePath:"Prueba/Dockerfile",
                     DockerImage:"priscillajb/prueba:1.0-${BUILD_ID}",
                     DockerContext:"prueba")
                 }
             }
         }
-    }
 
     stage('docker push'){
         steps{
             script{
                 dockerLib.push(DockerImage:"priscillajb/prueba:1.0-${BUILD_ID}")
+            }
             }
         }
     }
