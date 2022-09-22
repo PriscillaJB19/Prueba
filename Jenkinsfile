@@ -1,6 +1,6 @@
 @Library('shared-library-2')_
 pipeline{
-    agent any 
+    agent dockerL
 
     stages{
         stage('docker build'){
